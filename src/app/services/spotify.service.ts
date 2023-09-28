@@ -12,7 +12,7 @@ export class SpotifyService {
   }
 
   token: string =
-    'BQBqhmep2As4XEEzdC5V8Kb4ARn5C_Uifc8Qpwcjx2zSRwVX9QPJNmv3TgWTWfDdlZUI_2SbDe9C9YN7pdAsDqSOdQ2pF8qJK9JuISz11QYY-koG_gE';
+    'BQDG1Ko6X5c6kureP0c6sYls2Eg8F09MRibPQgiP4WdngQJXEwlXnj2RZJEqSNEt2LJx2YCxtJ7XAQfsQXYvF6MMiVP7vcTTnNBvYJbBRVG0dxzWTRk';
 
   getNewReleases(): Observable<any> {
     const headers = new HttpHeaders({

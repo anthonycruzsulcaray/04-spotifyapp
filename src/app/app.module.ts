@@ -9,6 +9,8 @@ import { ArtistaComponent } from './componnents/artista/artista.component';
 import { NavbarComponent } from './componnents/shared/navbar/navbar.component';
 import { ROUTES } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadingComponent } from './componnents/shared/loading/loading.component';
+import { NoimagePipe } from './pipes/noimage.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     SearchComponent,
     ArtistaComponent,
     NavbarComponent,
+    LoadingComponent,
+    NoimagePipe,
   ],
   imports: [
     BrowserModule,
