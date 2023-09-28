@@ -8,6 +8,7 @@ import { SearchComponent } from './componnents/search/search.component';
 import { ArtistaComponent } from './componnents/artista/artista.component';
 import { NavbarComponent } from './componnents/shared/navbar/navbar.component';
 import { ROUTES } from './app.routes';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,11 @@ import { ROUTES } from './app.routes';
     ArtistaComponent,
     NavbarComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(ROUTES, { useHash: true })],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(ROUTES, { useHash: true }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
