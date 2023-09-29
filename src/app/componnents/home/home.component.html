@@ -1,19 +1,18 @@
-
 <app-loading *ngIf="loading"></app-loading>
 
 <!-- card  -->
 <div class="row row-cols-1 row-cols-md-3 g-4 animated fadeIn">
-    <div class="col" *ngFor="let cancion of nuevasCanciones;">
-        <div class="card h-100">
-            <img [src]="cancion.images | noimage" class="card-img-top" alt="...">
+    <div (click)="verArtista(item)" class="col" *ngFor="let item of nuevasCanciones">
+        <div class="card h-100 puntero"> <!-- puntero style css-->
+            <img [src]="item.images | noimage" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">
-                    {{cancion.name}}
+                    {{item.name}}
                 </h5>
                 <h5>
                     <p class="card-text">
                         <!-- BADGE-->
-                        <span *ngFor="let artista of cancion.artists"
+                        <span *ngFor="let artista of item.artists"
                             class="badge rounded-pill text-bg-info">{{artista.name}}</span>
                     </p>
                 </h5>

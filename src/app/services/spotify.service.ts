@@ -12,7 +12,7 @@ export class SpotifyService {
   }
 
   token: string =
-    'BQDG1Ko6X5c6kureP0c6sYls2Eg8F09MRibPQgiP4WdngQJXEwlXnj2RZJEqSNEt2LJx2YCxtJ7XAQfsQXYvF6MMiVP7vcTTnNBvYJbBRVG0dxzWTRk';
+    'BQAGTzlOWe90qOjnUrgA98A8F1h4FT-L24KbFF4THRF1rIPFMkdDIg_tefSCmf2RzhR2pL341ydPEaB2erYr97lNr3dDT66mXOB2WQ2gAnrIGpgF4Xk';
 
   getNewReleases(): Observable<any> {
     const headers = new HttpHeaders({
@@ -33,11 +33,10 @@ export class SpotifyService {
       );
   }
 
-  getArtista(keyword: string): Observable<any> {
+  getArtistas(keyword: string): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.token,
     });
-
     return this.http
       .get(
         'https://api.spotify.com/v1/search?q=' +
