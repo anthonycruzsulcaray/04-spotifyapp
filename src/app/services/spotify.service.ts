@@ -12,15 +12,13 @@ export class SpotifyService {
   }
 
   token: string =
-    'BQAGTzlOWe90qOjnUrgA98A8F1h4FT-L24KbFF4THRF1rIPFMkdDIg_tefSCmf2RzhR2pL341ydPEaB2erYr97lNr3dDT66mXOB2WQ2gAnrIGpgF4Xk';
+    'BQACaGn_cGzo5vPjj9ex-EbYyjz8_N44hnB7wTbjJyatyQaRfvQ7Nm9sxRNCJJW0lXbopj-YaGpBqZ3UhtUO9jESit9eTRPuUoVEBtONXsje8823Rf0';
 
   getNewReleases(): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.token,
     });
 
-
-    
     return this.http
       .get('https://api.spotify.com/v1/browse/new-releases?limit=20', {
         headers,
@@ -42,14 +40,21 @@ export class SpotifyService {
         'https://api.spotify.com/v1/search?q=' +
           keyword +
           '&type=artist&limit=20',
-        {
-          headers,
-        }
+        { headers }
       )
       .pipe(
         map((response: any) => {
           return response.artists.items;
         })
       );
+  }
+
+  getArtista(idArtist: string): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.token,
+    });
+    return this.http.get(`https://api.spotify.com/v1/artists/${idArtist}`, {
+      headers,
+    });
   }
 }
