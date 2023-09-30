@@ -9,15 +9,27 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   nuevasCanciones: any[] = [];
   loading: boolean = false;
+  error: boolean = false;
+  messageError: string = '';
 
   constructor(private spotifyService: SpotifyService, private router: Router) {
     this.loading = true;
+    this.error = false;
 
-    this.spotifyService.getNewReleases().subscribe((data: any) => {
-      console.log('data api:', data);
-      this.nuevasCanciones = data;
-      this.loading = false;
-    });
+    this.spotifyService.getNewReleases().subscribe(
+      (data: any) => {
+        console.log('data api:', data);
+        this.nuevasCanciones = data;
+        this.loading = false;
+      },
+      (errService) => {
+        this.loading = false;
+        this.error = true;
+        console.log('error api:', errService);
+        console.log('error api:', errService.error.error.message);
+        this.messageError = errService.error.error.message;
+      }
+    );
   }
 
   verArtista(item: any) {
@@ -29,7 +41,6 @@ export class HomeComponent {
       idArtist = item.artists[0].id;
     }
     console.log('idArtist:', idArtist);
-
     this.router.navigate(['artist/', idArtist]);
   }
 }

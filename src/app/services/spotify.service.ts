@@ -12,7 +12,7 @@ export class SpotifyService {
   }
 
   token: string =
-    'BQACaGn_cGzo5vPjj9ex-EbYyjz8_N44hnB7wTbjJyatyQaRfvQ7Nm9sxRNCJJW0lXbopj-YaGpBqZ3UhtUO9jESit9eTRPuUoVEBtONXsje8823Rf0';
+    'BQCXXYvvVvAqrVYdzsxcYXNrImsvx0u1yFUBpBKusUF322Zg8y1_hDQ5epf0T-u9-2Lh3FUuswFiwNMjyOgkTy0BL7AOIwQSm5k0tqSsQSnVK6i5NKU';
 
   getNewReleases(): Observable<any> {
     const headers = new HttpHeaders({
@@ -56,5 +56,16 @@ export class SpotifyService {
     return this.http.get(`https://api.spotify.com/v1/artists/${idArtist}`, {
       headers,
     });
+  }
+
+  getTopTracks(id: string) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.token,
+    });
+    return this.http
+      .get(`https://api.spotify.com/v1/artists/${id}/top-tracks?market=ES`, {
+        headers,
+      })
+      .pipe(map((response: any) => response.tracks));
   }
 }
